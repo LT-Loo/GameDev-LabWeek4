@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ConsolePrint : MonoBehaviour
+public class PrintAndHide : MonoBehaviour
 {
     int i;
     public Renderer rend;
@@ -18,5 +18,11 @@ public class ConsolePrint : MonoBehaviour
     void Update()
     {
         Debug.Log(gameObject.name + ":" + ++i);
+
+        if (gameObject.tag == "Red" && i == 100) {
+            gameObject.SetActive(false);
+        } else if (gameObject.tag == "Blue" && i == Random.Range(150, 251)) {
+            rend.enabled = false;
+        }
     }
 }
